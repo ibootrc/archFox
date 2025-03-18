@@ -1,6 +1,6 @@
 /****************************************************************************
  * GENERAL SETTINGS                                                          *
-****************************************************************************/
+ ****************************************************************************/
 user_pref("content.notify.interval", 100000);
 user_pref("gfx.canvas.accelerated.cache-items", 4096);
 user_pref("gfx.canvas.accelerated.cache-size", 512);
@@ -27,10 +27,16 @@ user_pref("dom.security.sanitizer.enabled", true);
 
 /****************************************************************************
  * SECURITY & PRIVACY SETTINGS                                               *
-****************************************************************************/
+ ****************************************************************************/
 user_pref("browser.contentblocking.category", "strict");
-user_pref("urlclassifier.trackingSkipURLs", "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com");
-user_pref("urlclassifier.features.socialtracking.skipURLs", "*.instagram.com, *.twitter.com, *.twimg.com");
+user_pref(
+  "urlclassifier.trackingSkipURLs",
+  "*.reddit.com, *.twitter.com, *.twimg.com, *.tiktok.com",
+);
+user_pref(
+  "urlclassifier.features.socialtracking.skipURLs",
+  "*.instagram.com, *.twitter.com, *.twimg.com",
+);
 user_pref("network.cookie.sameSite.noneRequiresSecure", true);
 user_pref("privacy.globalprivacycontrol.enabled", true);
 user_pref("security.OCSP.enabled", 0);
@@ -69,10 +75,14 @@ user_pref("browser.crashReports.unsubmittedCheck.autoSubmit2", false);
 user_pref("captivedetect.canonicalURL", "");
 user_pref("network.captive-portal-service.enabled", false);
 user_pref("network.connectivity-service.enabled", false);
+// Disable Firefox Experiments
+user_pref("experiments.enabled", false);
+user_pref("experiments.manifest.uri", "");
+user_pref("experiments.supported", false);
 
 /****************************************************************************
  * USER INTERFACE ADJUSTMENTS                                                *
-****************************************************************************/
+ ****************************************************************************/
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("browser.compactmode.show", true);
 user_pref("browser.display.focus_ring_on_anything", true);
@@ -87,8 +97,14 @@ user_pref("cookiebanners.service.mode", 1);
 user_pref("cookiebanners.service.mode.privateBrowsing", 1);
 user_pref("browser.discovery.enabled", false);
 user_pref("browser.shell.checkDefaultBrowser", false);
-user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons", false);
-user_pref("browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features", false);
+user_pref(
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
+  false,
+);
+user_pref(
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
+  false,
+);
 user_pref("browser.preferences.moreFromMozilla", false);
 user_pref("browser.tabs.tabmanager.enabled", false);
 user_pref("browser.aboutConfig.showWarning", false);
@@ -103,4 +119,3 @@ user_pref("browser.bookmarks.openInTabClosesMenu", false);
 user_pref("browser.menu.showViewImageInfo", true);
 user_pref("findbar.highlightAll", true);
 user_pref("layout.word_select.eat_space_to_next_word", false);
-
