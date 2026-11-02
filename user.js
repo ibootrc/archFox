@@ -1,77 +1,90 @@
-/****************************************************************************
- * SNAPPY PERFORMANCE & RAM OPTIMIZATION (4GB / zram / i3)                   *
- ****************************************************************************/
-// Instant rendering: Show web content immediately
-user_pref("nglayout.initialpaint.delay", 0);
-user_pref("content.notify.ontimer", true);
-user_pref("content.notify.interval", 500000);
 
-// Limit content processes to save RAM (Crucial for 4GB systems)
-user_pref("dom.ipc.processCount", 2);
-user_pref("dom.ipc.processCount.extension", 1);
+// ============================================================
+// Custom Firefox Configuration
+// Platform: Arch Linux / X11 / i3
+// Firefox: 159
+// Hardware: Intel Core i7-6700HQ / Intel HD Graphics 530
+//
+// Priorities:
+// 1. Smooth browsing and responsiveness
+// 2. Preserve Firefox security architecture
+// 3. Practical privacy protection
+// 4. Confirmed hardware video acceleration
+//
+// ============================================================
 
-// Aggressively unload idle tabs when RAM is low
-user_pref("browser.tabs.unloadOnLowMemory", true);
 
-// Move cache to RAM (zram) and disable Disk I/O for speed
-user_pref("browser.cache.disk.enable", false);
-user_pref("browser.cache.memory.enable", true);
-user_pref("browser.cache.memory.capacity", 262144); // 256MB Cap
+// ------------------------------------------------------------
+// 1. TRACKING PROTECTION
+// ------------------------------------------------------------
 
-/****************************************************************************
- * NETWORK TUNING (Balanced for i3 CPU)                                      *
- ****************************************************************************/
-user_pref("network.http.max-connections", 900);
-user_pref("network.http.max-persistent-connections-per-server", 6);
-user_pref("network.http.max-urgent-start-excessive-connections-per-host", 3);
-user_pref("network.http.pacing.requests.enabled", true);
-user_pref("network.http.speculative-parallel-limit", 10);
-user_pref("network.dns.disablePrefetch", false);
-user_pref("network.prefetch-next", true);
-user_pref("network.predictor.enabled", true);
-
-/****************************************************************************
- * LINUX GPU ACCELERATION (Intel HD 5500 / VA-API)                           *
- ****************************************************************************/
-user_pref("gfx.webrender.all", true);
-user_pref("gfx.webrender.software", false);
-user_pref("media.ffmpeg.vaapi.enabled", true);
-user_pref("media.rdd-ffmpeg.enabled", true);
-user_pref("media.ffvpx.enabled", false);
-user_pref("general.autoScroll", false);
-user_pref("toolkit.cosmeticAnimations.enabled", false);
-
-/****************************************************************************
- * DE-BLOAT & 2026 AI KILL SWITCH                                            *
- ****************************************************************************/
-user_pref("browser.ml.enable", false);
-user_pref("browser.ai.sidebar.enabled", false);
-user_pref("browser.shopping.experience2024.enabled", false);
-user_pref("datareporting.policy.dataSubmissionEnabled", false);
-user_pref("datareporting.healthreport.uploadEnabled", false);
-user_pref("toolkit.telemetry.enabled", false);
-user_pref("app.normandy.enabled", false);
-user_pref("browser.ping-centre.telemetry", false);
-
-/****************************************************************************
- * MODERATE PRIVACY & SECURITY                                               *
- ****************************************************************************/
+// Strict Enhanced Tracking Protection.
+// If a website breaks, use a per-site exception.
 user_pref("browser.contentblocking.category", "strict");
-user_pref("privacy.fingerprintingProtection", true);
-user_pref("privacy.query_stripping.enabled", true);
-user_pref("security.OCSP.enabled", 1);
-user_pref("security.OCSP.require", false);
-user_pref("security.remote_settings.crlite_filters.enabled", true);
-user_pref("security.pki.crlite_mode", 2);
-user_pref("pdfjs.enableScripting", false);
 
-/****************************************************************************
- * UI & CONVENIENCE                                                          *
- ****************************************************************************/
-user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("browser.compactmode.show", true);
-user_pref("browser.aboutConfig.showWarning", false);
-user_pref("extensions.pocket.enabled", false);
-user_pref("cookiebanners.service.mode", 1);
-user_pref("full-screen-api.warning.timeout", 0);
-user_pref("browser.download.open_pdf_attachments_inline", true);
+
+// ------------------------------------------------------------
+// 2. HTTPS SECURITY
+// ------------------------------------------------------------
+
+// Prefer HTTPS across all browsing sessions.
+// HTTP-only websites may require an explicit exception.
+user_pref("dom.security.https_only_mode", true);
+
+
+// ------------------------------------------------------------
+// 3. TELEMETRY AND STUDIES
+// ------------------------------------------------------------
+
+// Disable technical and interaction telemetry uploads.
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("datareporting.healthreport.uploadEnabled", false);
+
+// Disable participation in Firefox Shield Studies.
+user_pref("app.shield.optoutstudies.enabled", false);
+
+
+// ------------------------------------------------------------
+// 4. HARDWARE VIDEO DECODING
+// ------------------------------------------------------------
+
+// VA-API hardware decoding confirmed working on Intel HD 530.
+// Do not force unsupported codecs or GPU features.
+user_pref("media.ffmpeg.vaapi.enabled", true);
+
+
+// ------------------------------------------------------------
+// 5. SMOOTH SCROLLING
+// ------------------------------------------------------------
+
+// Preserve the settings that resolved the previous issue.
+user_pref("mousewheel.system_scroll_override.enabled", false);
+user_pref("mousewheel.default.delta_multiplier_y", 150);
+user_pref("general.smoothScroll", true);
+
+
+// ------------------------------------------------------------
+// 6. PASSWORD AND FORM HISTORY
+// ------------------------------------------------------------
+
+// Do not offer to save passwords.
+user_pref("signon.rememberSignons", false);
+
+// Keep form history. Manage deletion manually.
+user_pref("privacy.clearOnShutdown_v2.formdata", false);
+
+
+// ------------------------------------------------------------
+// 7. INTERFACE
+// ------------------------------------------------------------
+
+// Keep bookmarks toolbar hidden.
+user_pref("browser.toolbars.bookmarks.visibility", "never");
+
+// Disable the picture-in-picture video toggle.
+user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
+
+
+// ============================================================
+// END OF CUSTOM CONFIGURATION
+// ============================================================
